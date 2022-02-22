@@ -2,6 +2,7 @@
 /vault/data/**
 /vault/logs
 /vault/file
+/vault/sealed
 /cart-service/
 /mysql/data/
 /kafka/data/

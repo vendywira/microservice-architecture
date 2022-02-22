@@ -1,0 +1,55 @@
+management:
+  security:
+    enabled: false
+logging:
+  pattern:
+    level: "[${spring.application.name:-},%X{traceId},%X{spanId}] %-5p [%t] %C{2} - %m%n"
+server:
+  port: 8080
+spring:
+  sleuth:
+    traceId128: true
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        enabled: true
+        instance-id: ${spring.application.name}-id:${random.value}
+        serviceName: dk-${spring.application.name}
+        healthCheckInterval: 15s
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: dk-cart-service
+          uri: lb://dk-cart-service
+          predicates:
+            - Path=/cart/**
+          filters:
+            - RewritePath=/cart/(?<path>.*), /$\{path}
+        - id: dk-order-service
+          uri: lb://dk-order-service
+          predicates:
+            - Path=/order/**
+          filters:
+            - RewritePath=/order/(?<path>.*), /$\{path}
+        - id: dk-product-service
+          uri: lb://dk-product-service
+          predicates:
+            - Path=/product/**
+          filters:
+            - RewritePath=/product/(?<path>.*), /$\{path}
+        - id: dk-payment-service
+          uri: lb://dk-payment-service
+          predicates:
+            - Path=/payment/**
+          filters:
+            - RewritePath=/payment/(?<path>.*), /$\{path}
+        - id: dk-notification-service
+          uri: lb://dk-notification-service
+          predicates:
+            - Path=/notification/**
+          filters:
+            - RewritePath=/notification/(?<path>.*), /$\{path}

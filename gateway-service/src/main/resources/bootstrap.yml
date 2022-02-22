@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    consul:
+      config:
+        prefixes: config
+        name: ${spring.application.name}
+        data-key: application.yml
+        format: YAML
+        failFast: false

@@ -1,10 +1,10 @@
-package com.dkatalis.demo.cart.service;
+package com.dkatalis.gateway;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CartServiceApplicationTests {
+class GatewayServiceApplicationTests {
 
 	@Test
 	void contextLoads() {
