@@ -16,4 +16,13 @@ db.createUser(
         roles: [{role: 'readWrite', db: 'product_service_db'}],
     }
 );
+
+db = db.getSiblingDB('payment_service_db');
+db.createUser(
+    {
+        user: 'payment-service',
+        pwd:  'p@ssw0rd123',
+        roles: [{role: 'readWrite', db: 'product_service_db'}],
+    }
+);
 print('End creating database ##########################')
