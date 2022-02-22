@@ -41,9 +41,9 @@ services:
     volumes:
       - ./mongo/data:/bitnami/mongodb/data
       - ./mongo/config/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
-  mysql-order:
+  mysql:
     image: mysql:8
-    container_name: mysql-order
+    container_name: mysql
     ports:
       - "3306:3306"
     environment:

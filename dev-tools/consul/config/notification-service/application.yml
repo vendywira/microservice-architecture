@@ -1,0 +1,15 @@
+server:
+  port: 8085
+spring:
+  data:
+    mongodb:
+      uri: 'mongodb://${db.user}:${db.password}@localhost:27017/notification_service_db'
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        enabled: true
+        instance-id: ${spring.application.name}-id:${random.value}
+        serviceName: dk-${spring.application.name}
+        healthCheckInterval: 15s

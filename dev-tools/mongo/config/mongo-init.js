@@ -25,4 +25,13 @@ db.createUser(
         roles: [{role: 'readWrite', db: 'product_service_db'}],
     }
 );
+
+db = db.getSiblingDB('notification_service_db');
+db.createUser(
+    {
+        user: 'notification-service',
+        pwd:  'p@ssw0rd123',
+        roles: [{role: 'readWrite', db: 'notification_service_db'}],
+    }
+);
 print('End creating database ##########################')
