@@ -3,3 +3,5 @@
 /vault/logs
 /vault/file
 /cart-service/
+/mysql/data/
+/kafka/data/
