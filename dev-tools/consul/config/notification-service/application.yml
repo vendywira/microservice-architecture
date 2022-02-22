@@ -1,6 +1,10 @@
 management:
   security:
     enabled: false
+kafka:
+  groupId: notification-service
+  bootstrap:
+    address: localhost:9092
 server:
   port: 8085
 logging:

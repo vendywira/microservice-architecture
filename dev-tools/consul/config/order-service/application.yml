@@ -1,6 +1,10 @@
 management:
   security:
     enabled: false
+kafka:
+  groupId: order-service
+  bootstrap:
+    address: localhost:9092
 server:
   port: 8082
 logging:
