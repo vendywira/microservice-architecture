@@ -28,18 +28,19 @@ services:
       - '8600:8600/tcp'
       - '8600:8600/udp'
     command: 'agent -server -bind 0.0.0.0 -client 0.0.0.0 -bootstrap-expect 1 -config-file=/consul/config/config.json'
-  mongo-cart:
+  mongodb:
     image: bitnami/mongodb:4.4
-    container_name: mongo-cart
+    container_name: mongodb
     environment:
-      - MONGODB_USERNAME=cart-service
-      - MONGODB_PASSWORD=p@ssw0rd123
-      - MONGODB_DATABASE=cart_service_db
-      - ALLOW_EMPTY_PASSWORD=yes
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_ROOT_DATABASE: root_db
+      ALLOW_EMPTY_PASSWORD: yes
     ports:
-      - "27018:27017"
+      - "27017:27017"
     volumes:
-      - ./cart-service:/bitnami/mongodb
+      - ./mongo/data:/bitnami/mongodb/data
+      - ./mongo/config/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
   mysql-order:
     image: mysql:8
     container_name: mysql-order

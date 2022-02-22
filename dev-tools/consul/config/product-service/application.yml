@@ -1,9 +1,9 @@
 server:
-  port: 8081
+  port: 8083
 spring:
   data:
     mongodb:
-      uri: 'mongodb://${db.user}:${db.password}@localhost:27017/cart_service_db'
+      uri: 'mongodb://${db.user}:${db.password}@localhost:27017/product_service_db'
   cloud:
     consul:
       host: localhost
