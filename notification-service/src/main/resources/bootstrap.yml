@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: notification-service
+  cloud:
+    consul:
+      config:
+        prefixes: config
+        name: ${spring.application.name}
+        data-key: application.yml
+        format: YAML
+        failFast: false
+    vault:
+      token: s.on64l993RbCQz20xHbNNh7UJ
+      scheme: http
+      kv:
+        backend: secret
+        enabled: true
+      enabled: true

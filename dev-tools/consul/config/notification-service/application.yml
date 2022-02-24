@@ -1,0 +1,27 @@
+management:
+  security:
+    enabled: false
+kafka:
+  groupId: notification-service
+  bootstrap:
+    address: localhost:9092
+server:
+  port: 8085
+logging:
+  pattern:
+    level: "[${spring.application.name:-},%X{traceId},%X{spanId}] %-5p [%t] %C{2} - %m%n"
+spring:
+  sleuth:
+    traceId128: true
+  data:
+    mongodb:
+      uri: 'mongodb://${db.user}:${db.password}@localhost:27017/notification_service_db'
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        enabled: true
+        instance-id: ${spring.application.name}-id:${random.value}
+        serviceName: dk-${spring.application.name}
+        healthCheckInterval: 15s
